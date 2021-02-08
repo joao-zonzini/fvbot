@@ -42,12 +42,13 @@ async def somar(ctx, primeiro: float, segundo: float):   ## tudo eh string, dois
 
 
 @bot.command(name='criar_canal', help='Cria canal com nome dado')
+## @commands.has_role('cargo')                          ## se quisermos limitar o comando a certo cargo
 async def criar_canal(ctx, nome_canal):
-    guild = ctx.guild
-    ja_existe = discord.utils.get(guild.channels, name=channel_name)
-    if not ja_existe:
-        print(f'Criando canal de nome: {nome_canal}')
-        await guild.create_text_channel(nome_canal)
+    guild = ctx.guild                                   ## guild eh o servidor
+    ja_existe = discord.utils.get(guild.channels, name=channel_name)  ## verifica se existe canal com o nome
+    if not ja_existe:                                   ## caso nao exista, crie
+        print(f'Criando canal de nome: {nome_canal}')   ## confirmacao no terminal
+        await guild.create_text_channel(nome_canal)     ## enfim cria canal
 
 
 bot.run(TOKEN)
