@@ -12,7 +12,7 @@ def mult(primeiro: float, segundo: float):
 
 
 def dividir(primeiro: float, segundo: float):
-    return (primeiro+segundo)
+    return (primeiro/segundo)
 
 
 def potenc(primeiro: float, segundo: float):

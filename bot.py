@@ -47,6 +47,8 @@ async def calcular(ctx, primeiro: float, operador, segundo: float):   ## tudo eh
         resultado = calc.somar(primeiro, -segundo)
     elif operador == '*':
         resultado = calc.mult(primeiro, segundo)
+    elif operador == '/':
+        resultado = calc.dividir(primeiro, segundo)
     elif operador == '**':
         resultado = calc.potenc(primeiro, segundo)
     else:
