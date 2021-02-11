@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 # bot.py
 # bot do Discord para o cursinho
-# joao-zonzini 02/08/21
+# joao-zonzini 08/02/21
 
 #imports das bibliotecas
 import discord
 from discord.ext import commands    ## comandos do bot
 import os                           ## comandos do sistema operacional
-import random                       ## coisas aleatorias 
+import random                       ## coisas aleatorias
 from dotenv import load_dotenv      ## para pegar as variaveis do ambiente
 
-## carregando as variaveis 
+import utils.calc as calc
+
+## carregando as variaveis
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
@@ -36,9 +38,19 @@ async def on_message(message):
 
         await bot.process_commands(message)                         ## processa a mensagem pelos comandos
 
-@bot.command(name='soma', help='Soma dois numeros')
-async def somar(ctx, primeiro: float, segundo: float):   ## tudo eh string, dois pontos converte
-    await ctx.send(primeiro+segundo)
+@bot.command(name='calc', help='Realiza operacoes matematicas com dois numeros')
+async def calcular(ctx, primeiro: float, operador, segundo: float):   ## tudo eh string, dois pontos converte
+    if operador == '+':
+        resultado = calc.somar(primeiro, segundo)
+    elif operador == '-':
+        resultado = calc.somar(primeiro, -segundo)
+    elif operador == '*':
+        resultado = calc.mult(primeiro, segundo)
+    elif operador == '**':
+        resultado = calc.potenc(primeiro, segundo)
+    else:
+        resultado = 'Não conheço esse operador ;('
+    await ctx.send(resultado)
 
 
 @bot.command(name='criar_canal', help='Cria canal com nome dado')
