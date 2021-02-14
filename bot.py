@@ -39,7 +39,11 @@ async def on_message(message):
 
         await bot.process_commands(message)                         ## processa a mensagem pelos comandos
 
-@bot.command(name='calc', brief='Operacoes matematicas com dois numeros', description='O comando tem a sintaxe ao fim desta mensagem, você precisa dar um número, o operador e um segundo número, todos separados por espaço.\nOperadores são:\n\t\t+   ->  soma\n\t\t-   ->  subtração\n\t\t*   ->  multiplicação\n\t\t/   ->  divisão\n\t\t**  ->  potenciação')
+@bot.command(
+            name='calc',
+            brief='Operacoes matematicas com dois numeros',
+            description='O comando tem a sintaxe ao fim desta mensagem, você precisa dar um número, o operador e um segundo número, todos separados por espaço.\nOperadores são:\n\t\t+   ->  soma\n\t\t-   ->  subtração\n\t\t*   ->  multiplicação\n\t\t/   ->  divisão\n\t\t**  ->  potenciação'
+)
 async def calcular(ctx, primeiro: float, operador, segundo: float):   ## tudo eh string, dois pontos converte
     if operador == '+':
         resultado = calc.somar(primeiro, segundo)
@@ -52,11 +56,14 @@ async def calcular(ctx, primeiro: float, operador, segundo: float):   ## tudo eh
     elif operador == '**':
         resultado = calc.potenc(primeiro, segundo)
     else:
-        resultado = 'Erro! Não conheço esse operador ;('
+        resultado = 'Opa! Você mandou um operador que eu não conheço, manda um `!help calc` pra ver meus operadores!'
     await ctx.send(resultado)
 
 
-@bot.command(name='criar_canal', help='Cria canal com nome dado')
+@bot.command(
+            name='criar_canal',
+            help='Cria canal com nome dado'
+)
 ## @commands.has_role('cargo')                          ## se quisermos limitar o comando a certo cargo
 async def criar_canal(ctx, nome_canal):
     guild = ctx.guild                                   ## guild eh o servidor
