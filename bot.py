@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # bot.py
 # bot do Discord para o cursinho
-# joao-zonzini 08/02/21
 
 #imports das bibliotecas
 import discord
