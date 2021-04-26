@@ -73,7 +73,7 @@ async def criar_canal(ctx, nome_canal):
 
 @bot.command(name='oibot')
 async def oi_bot(ctx):
-    await ctx.send(f'Oi para você, (ctx.message.author.mention)')
+    await ctx.send("Oi para você, {}".format(ctx.message.author.mention))
 
-    
+
 bot.run(TOKEN)
