@@ -27,7 +27,7 @@ async def on_ready():                                       ## assim que o bot c
 @bot.event
 async def on_member_join():                                 ## quando alguem entrar no servidor
     await member.create.dm()
-    await member.dm_channel.send(f'{member.name}, bem vindo ao servidor do Cursinho!')  ## manda dm para o novo
+    await member.dm_channel.send(f' Oi {member.name}, bem vindo ao servidor do Cursinho! Eu sou o bot ;) Posso te ajudar com algumas coisas, manda um ``!help`` que eu te mostro o que posso fazer...')  ## manda dm para o novo
 
 @bot.event
 async def on_message(message):
