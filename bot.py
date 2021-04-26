@@ -71,5 +71,9 @@ async def criar_canal(ctx, nome_canal):
         print(f'Criando canal de nome: {nome_canal}')   ## confirmacao no terminal
         await guild.create_text_channel(nome_canal)     ## enfim cria canal
 
+@bot.command(name='oibot')
+async def oi_bot(ctx):
+    await ctx.send(f'Oi para você, (ctx.message.author.mention)')
 
+    
 bot.run(TOKEN)
