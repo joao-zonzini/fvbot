@@ -51,10 +51,11 @@ async def calcular(ctx, primeiro: float, operador, segundo: float):   ## tudo eh
     elif operador == '*':
         resultado = calc.mult(primeiro, segundo)
     elif operador == '/':
-        resultado = calc.dividir(primeiro, segundo)
-    elif operador == '**':
         if segundo == 0:
-            await ctx.send("Desonra para a família Fa! Jamais dividirás por zero.")
+            resultado = "Desonra para a família Fa! Jamais dividirás por zero."
+        else:
+            resultado = calc.dividir(primeiro, segundo)
+    elif operador == '**':
         resultado = calc.potenc(primeiro, segundo)
     else:
         resultado = 'Opa! Você mandou um operador que eu não conheço, manda um `!help calc` pra ver meus operadores!'
