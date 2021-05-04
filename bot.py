@@ -27,7 +27,9 @@ async def on_ready():                                       ## assim que o bot c
 @bot.event
 async def on_member_join():                                 ## quando alguem entrar no servidor
     await member.create.dm()
-    await member.dm_channel.send(f' Oi {member.name}, bem vindo ao servidor do Cursinho! Eu sou o bot ;) Posso te ajudar com algumas coisas, manda um ``!help`` que eu te mostro o que posso fazer...')  ## manda dm para o novo
+    await member.dm_channel.send(
+        f' Oi {member.name}, bem vindo ao servidor do Cursinho! Eu sou o bot ;) Posso te ajudar com algumas coisas, manda um ``!help`` que eu te mostro o que posso fazer...'
+    ) ## manda dm para o novo
 
 @bot.event
 async def on_message(message):
@@ -69,14 +71,23 @@ async def calcular(ctx, primeiro: float, operador, segundo: float):   ## tudo eh
 ## @commands.has_role('cargo')                          ## se quisermos limitar o comando a certo cargo
 async def criar_canal(ctx, nome_canal):
     guild = ctx.guild                                   ## guild eh o servidor
-    ja_existe = discord.utils.get(guild.channels, name=channel_name)  ## verifica se existe canal com o nome
+    ja_existe = discord.utils.get(guild.channels, name=nome_canal)  ## verifica se existe canal com o nome
     if not ja_existe:                                   ## caso nao exista, crie
         print(f'Criando canal de nome: {nome_canal}')   ## confirmacao no terminal
         await guild.create_text_channel(nome_canal)     ## enfim cria canal
 
 @bot.command(name='oibot')
 async def oi_bot(ctx):
-    await ctx.send("Oi para você, {}".format(ctx.message.author.mention))
+    frases_oibot = [
+        'Oi para você, {}!',
+        '{}, você por aqui?',
+        'Vem sempre aqui, {}? :eyes:',
+        'Tava te esperando, {}',
+        '{} oi sumide, rs'
+    ]
+    resposta = random.choice(frases_oibot)
+    await ctx.send(resposta.format(ctx.message.author.mention))
+
 
 
 bot.run(TOKEN)
